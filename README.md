@@ -7,3 +7,5 @@ Instructions
  - Install using node package manager: `npm install`
  - Build using grunt: `npm build`
  - Startup the app: `npm start`
+
+I've added config.js to the git ignore file to keep my API key private.

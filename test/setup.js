@@ -2,5 +2,5 @@ var assert = chai.assert;
 
 mocha.setup({
   ui: 'tdd',
-  globals: ['taskback']
+  globals: ['bTask', 'gapi', '___jsl']
 });

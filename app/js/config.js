@@ -1,7 +1,7 @@
 define([], function() {
   var config = {};
-  config.apiKey = 'your API key';
+  config.apiKey = 'AIzaSyB4DePaYtU3mVqzK3IoiCeKxF94pV0qaq8';
   config.scopes = 'https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/userinfo.profile';
-  config.clientId = 'your client ID';
+  config.clientId = '794098456712.apps.googleusercontent.com';
   return config;
 });

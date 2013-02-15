@@ -1,6 +1,5 @@
-suit('App', function() {
+suite('App', function() {
   test('Should be present', function() {
-    asset.ok(window.taskback);
+    assert.ok(window.taskback);
   });
 });
-
