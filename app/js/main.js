@@ -2,6 +2,7 @@ requirejs.config({
   baseUrl: 'js',
 
   paths: {
+    text: 'lib/text'
   },
 
   shim: {
@@ -18,8 +19,6 @@ requirejs.config({
   }
 });
 
-require(['app'],
-
-function(App) {
+require(['app'], function(App) {
   window.taskback = new App();
 });
