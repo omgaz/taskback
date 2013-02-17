@@ -25,6 +25,7 @@ function(ApiManager, AppView, AuthView, ListMenuView, TaskLists) {
   App.prototype = {
     views: {},
     collections: {},
+
     connectGapi: function() {
       var self = this;
 
@@ -32,9 +33,7 @@ function(ApiManager, AppView, AuthView, ListMenuView, TaskLists) {
 
       this.apiManager.on('ready', function() {
         self.collections.lists.fetch({ data: { userId: '@me' }, success: function(res) {
-          _.each(res.models, function(model) {
-            self.views.listMenu.render();
-          });
+          self.views.listMenu.render();
         }});
       });
 

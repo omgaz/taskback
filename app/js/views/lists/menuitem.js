@@ -22,7 +22,13 @@ define(['text!templates/lists/menuitem.html'], function(template) {
     },
 
     open: function() {
-      var self = this;
+      if (taskback.views.activeListMenuItem) {
+        taskback.views.activeListMenuItem.$el.removeClass('active');
+      }
+
+      taskback.views.activeListMenuItem = this;
+      this.$el.addClass('active');
+
       return false;
     }
   });

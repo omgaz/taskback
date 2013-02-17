@@ -79,19 +79,38 @@ define(['config'], function(config) {
 
   Backbone.sync = function(method, model, options) {
 
+    var requestContent = {};
     options || (options = {});
 
+    // insert the required ID parameters, based on the type of model being operated on
+    switch (model.url) {
+      case 'tasks':
+        requestContent.task = model.get('id');
+        break;
+
+      case 'tasklists':
+        requestContent.tasklist = model.get('id');
+        break;
+    }
+
+    // CRUD
     switch (method) {
-      case 'create': // Create a new task.
+      case 'create': // Create a new task or tasklist.
+        requestContent['resource'] = model.toJSON();
+        request = gapi.client.tasks[model.url].insert(requestContent);
+        Backbone.gapiRequest(request, method, model, options);
         break;
 
-      case 'update': // Update an existing task.
+      case 'update': // Update an existing task or tasklist.
+        requestContent['resource'] = model.toJSON();
+        request = gapi.client.tasks[model.url].update(requestContent);
+        Backbone.gapiRequest(request, method, model, options);
         break;
 
-      case 'delete': // Delete a task.
+      case 'delete': // Delete a task or tasklist.
         break;
 
-      case 'read': // Get a list of tasks.
+      case 'read': // Get a list of tasks or tasklists.
         request = gapi.client.tasks[model.url].list(options.data);
         Backbone.gapiRequest(request, method, model, options);
         break;

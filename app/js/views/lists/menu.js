@@ -22,6 +22,24 @@ define(['views/lists/menuitem'], function(ListMenuItemView) {
       });
 
       return this;
+    },
+
+    renderMenuItem: function(model) {
+      var item = new ListMenuItemView({ model: model });
+      this.$el.append(item.render().el);
+
+      if (!taskback.views.activeListMenuItem) {
+        taskback.views.activeListMenuItem = item;
+      }
+      
+      if (model.get('id') === taskback.views.activeListMenuItem.model.get('id')) {
+        item.open();
+      }
+    },
+
+    open: function() {
+      taskback.models.activeList = this.model;
+      return false;
     }
   });
 
