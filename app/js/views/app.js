@@ -11,11 +11,9 @@ function(template) {
     template: _.template(template),
 
     events: {
-      
     },
 
     initialize: function() {
-
     },
 
     render: function() {
