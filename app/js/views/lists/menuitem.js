@@ -1,4 +1,4 @@
-define(['text!templates/lists/menuitem.html'], function(template) {
+define(['text!templates/lists/menuitem.html', 'views/tasks/index'], function(template, TasksIndexView) {
   var ListMenuItemView = Backbone.View.extend({
     tagName: 'li',
     className: 'list-menu-item',
@@ -28,6 +28,14 @@ define(['text!templates/lists/menuitem.html'], function(template) {
 
       taskback.views.activeListMenuItem = this;
       this.$el.addClass('active');
+
+      // Render the tasks
+      if (taskback.views.tasksIndexView) {
+        taskback.views.tasksIndexView.remove();
+      }
+
+      taskback.views.tasksIndexView = new TasksIndexView({ collection: taskback.collections.tasks, model: this.model });
+      taskback.views.app.$el.find('#tasks-container').html(taskback.views.tasksIndexView.render().el);
 
       return false;
     }
