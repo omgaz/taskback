@@ -1,4 +1,4 @@
-define(['text!templates/lists/menuitem.html', 'views/tasks/index'], function(template, TasksIndexView) {
+define(['text!templates/lists/menuitem.html', 'views/tasks/index', 'collections/tasks'], function(template, TasksIndexView, Tasks) {
   var ListMenuItemView = Backbone.View.extend({
     tagName: 'li',
     className: 'list-menu-item',
@@ -34,7 +34,7 @@ define(['text!templates/lists/menuitem.html', 'views/tasks/index'], function(tem
         taskback.views.tasksIndexView.remove();
       }
 
-      taskback.views.tasksIndexView = new TasksIndexView({ collection: taskback.collections.tasks, model: this.model });
+      taskback.views.tasksIndexView = new TasksIndexView({ collection: new Tasks({ tasklist: this.model.get('id') }), model: this.model });
       taskback.views.app.$el.find('#tasks-container').html(taskback.views.tasksIndexView.render().el);
 
       return false;
