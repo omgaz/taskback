@@ -108,6 +108,9 @@ define(['config'], function(config) {
         break;
 
       case 'delete': // Delete a task or tasklist.
+        requestContent['resource'] = model.toJSON();
+        request = gapi.client.tasks[model.url].delete(requestContent);
+        Backbone.gapiRequest(request, method, model, options);
         break;
 
       case 'read': // Get a list of tasks or tasklists.

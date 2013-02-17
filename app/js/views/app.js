@@ -14,7 +14,8 @@ function(template, AddListView, EditListView) {
 
     events: {
       'click #add-list-button': 'addList',
-      'click #edit-list-button': 'editList'
+      'click #edit-list-button': 'editList',
+      'click #delete-list-button': 'deleteList'
     },
 
     initialize: function() {
@@ -38,6 +39,13 @@ function(template, AddListView, EditListView) {
 
     editList: function() {
       return this.listForm(new EditListView({ model: taskback.views.activeListMenuItem.model }));
+    },
+
+    deleteList: function() {
+      if (confirm('Are you sure you want to delete that list?')) {
+        taskback.views.activeListMenuItem.model.destroy();
+      }
+      return false;
     }
   });
 
