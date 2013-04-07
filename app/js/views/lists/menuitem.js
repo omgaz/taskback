@@ -17,11 +17,7 @@ define(['text!templates/lists/menuitem.html', 'views/tasks/index', 'collections/
 
     render: function() {
       var $el = $(this.el);
-      $el.data('listId', this.model.get('id'));
       $el.html(this.template(this.model.toJSON()));
-
-      taskback.routes.navigate('lists/' + this.model.get('id'));
-
       return this;
     },
 
@@ -38,9 +34,11 @@ define(['text!templates/lists/menuitem.html', 'views/tasks/index', 'collections/
         taskback.views.tasksIndexView.remove();
       }
 
-      taskback.views.tasksIndexView = new TasksIndexView({ collection: new Tasks({ tasklist: this.model.get('id') }), model: this.model });
+      var tasks = new Tasks({ tasklist: this.model.get('id') });
+      taskback.collections.tasks = tasks;
+      taskback.views.tasksIndexView = new TasksIndexView({ collection: tasks, model: this.model });
       taskback.views.app.$el.find('#tasks-container').html(taskback.views.tasksIndexView.render().el);
-
+      taskback.routes.navigate('lists/' + this.model.get('id'));
       return false;
     }
   });

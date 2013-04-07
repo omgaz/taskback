@@ -14,20 +14,15 @@ define(['text!templates/tasks/task.html', 'views/tasks/edit'], function(template
       this.parentView = options.parentView;
       this.model.on('change', this.render, this);
       this.model.on('destroy', this.remove, this);
+      this.model.on('remove', this.remove, this);
     },
 
     render: function(e) {
-      var $el = $(this.el),
-          taskId = this.model.get('id');
-      if(taskId) {
-        $el.data('taskId', taskId);
-        $el.html(this.template(this.model.toJSON()));
-        $el.find('.check-task').attr('checked', this.model.get('status') === 'completed');
+      var $el = $(this.el);
+      $el.html(this.template(this.model.toJSON()));
+      $el.find('.check-task').attr('checked', this.model.get('status') === 'completed');
 
-        return this;
-      }
-
-      return false;
+      return this;
     },
 
     open: function(e) {

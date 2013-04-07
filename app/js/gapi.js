@@ -79,7 +79,7 @@ define(['config'], function(config) {
 
   Backbone.sync = function(method, model, options) {
 
-    var requestContent = {};
+    var requestContent = {}, request;
     options || (options = {});
 
     // insert the required ID parameters, based on the type of model being operated on
@@ -137,7 +137,7 @@ define(['config'], function(config) {
         } else {
           result = res;
         }
-        options.success(model, result, request);
+        options.success(result);
       }
     });
   };

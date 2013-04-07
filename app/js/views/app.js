@@ -15,7 +15,8 @@ function(template, AddListView, EditListView) {
     events: {
       'click #add-list-button': 'addList',
       'click #edit-list-button': 'editList',
-      'click #delete-list-button': 'deleteList'
+      'click #delete-list-button': 'deleteList',
+      'click .clear-complete': 'clearComplete'
     },
 
     initialize: function() {
@@ -46,6 +47,11 @@ function(template, AddListView, EditListView) {
         taskback.views.activeListMenuItem.model.destroy();
       }
       return false;
+    },
+
+    clearComplete: function() {
+      var list = taskback.views.activeListMenuItem.model;
+      taskback.collections.tasks.clear(list.get('id'), {success: function() {}});
     }
   });
 
