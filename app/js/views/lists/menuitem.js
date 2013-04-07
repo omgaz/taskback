@@ -12,12 +12,16 @@ define(['text!templates/lists/menuitem.html', 'views/tasks/index', 'collections/
     initialize: function() {
       this.model.on('change', this.render, this);
       this.model.on('destroy', this.remove, this);
+      this.model.on('select', this.open, this);
     },
 
     render: function() {
       var $el = $(this.el);
       $el.data('listId', this.model.get('id'));
       $el.html(this.template(this.model.toJSON()));
+
+      taskback.routes.navigate('lists/' + this.model.get('id'));
+
       return this;
     },
 
