@@ -1,13 +1,24 @@
 #main { padding-left: 0; height: 100% }
 #sign-in-container, #signed-in-container { display: none }
-h1 { margin: 0 0 10px 0; padding: 0; text-align: center; font-size: 36px }
+h1 {
+	text-shadow: 0px 0px 2px rgba(255,255,255,0.8);
+	color: #222;
+	border-bottom: 1px solid black;
+	margin: 0;
+	padding: 10px 0 20px 6px;
+	text-align: left;
+	font-size: 50px;
+}
 
-.main-left-col { height: 100%; position: fixed; padding-top: 10px; box-shadow: inset -1px 0 3px #000; overflow: auto; background-color: #999}
+.main-left-col { background-image: url('../img/debut_dark.png'); height: 100%; position: fixed; padding-top: 10px; box-shadow: inset -1px 0 3px #000; overflow: auto; background-color: #999}
 
 .left-nav { list-style-type: none; margin: 0; padding: 0 }
 .left-nav li a { display: block; text-shadow: 1px 1px #000; color: #fff; padding: 10px; width: 100% }
-.left-nav li.active a { background-color: #fff; color: #333; text-shadow: none; font-weight: bold }
-.left-nav li a:hover { text-decoration: none; background-color: #fff; color: #333; text-shadow: none; font-weight: bold }
+.left-nav li.active a { background-image: url('../img/white_wall_hash.png'); background-color: #fff; color: #333; text-shadow: none; font-weight: bold }
+.left-nav li a:hover { background-image: url('../img/white_wall_hash.png'); text-decoration: none; background-color: #fff; color: #333; text-shadow: none; font-weight: bold }
+.left-nav li {
+	border-bottom: 1px solid black; border-top: 1px solid #666;
+}
 
 .main-right-col { margin-left: 16.5%; margin-top: 10px }
 
@@ -25,3 +36,16 @@ h1 { margin: 0 0 10px 0; padding: 0; text-align: center; font-size: 36px }
 .task input { margin-right: 3px }
 
 .completed { text-decoration: line-through; }
+
+h1, h2, h3, h4 {
+	font-family: playball, sans-serif;
+}
+
+body {
+	background-image: url('../img/white_wall_hash.png');
+	font-family: 'PT Sans', sans-serif;
+}
+
+.inline {
+	display: inline;
+}
