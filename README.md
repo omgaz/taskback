@@ -9,3 +9,7 @@ Instructions
  - Startup the app: `npm start`
 
 I've added config.js to the git ignore file to keep my API key private.
+
+Preview
+-------
+![Preview of the app](taskback.JPG)
