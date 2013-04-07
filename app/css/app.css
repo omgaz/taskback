@@ -49,3 +49,5 @@ body {
 .inline {
 	display: inline;
 }
+
+li.sortable-placeholder { border: 1px dashed #CCC; background: none; height: 28px; margin: 5px 0 }
